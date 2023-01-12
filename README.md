@@ -20,7 +20,8 @@ Once the dependencies are installed, you can run any of the challenges by using 
 challenge-1 path_to_data col1 col2 path_where_to_save
 challenge-2 path_to_store_file_txt 
 challenge-3 path_to_store_file_txt 
-challenge-4 path_to_store_file_csvchallenge-5 url path_to_where_to_store_html 
+challenge-4 path_to_store_file_csv 
+challenge-5 url path_to_where_to_store_html 
 ```
 
 ## Note

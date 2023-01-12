@@ -1,0 +1,7 @@
+[console_scripts]
+challenge-1 = src.challenge_1:challenge_1
+challenge-2 = src.challenge_2:challenge_2
+challenge-3 = src.challenge_3:challenge_3
+challenge-4 = src.challenge_4:challenge_4
+challenge-5 = src.challenge_5:challenge_5
+

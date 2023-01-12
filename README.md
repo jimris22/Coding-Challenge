@@ -17,20 +17,16 @@ This will install all the necessary packages including pandas, numpy, scikit-lea
 Once the dependencies are installed, you can run any of the challenges by using the command line interface. Navigate to the root directory of the project and run the following command for the corresponding challenge:
 
 ```bash
-challenge-1
-challenge-2
-challenge-3
-challenge-4
-challenge-5
+challenge-1 path_to_data col1 col2 path_where_to_save
+challenge-2 path_to_store_file_txt 
+challenge-3 path_to_store_file_txt 
+challenge-4 path_to_store_file_csvchallenge-5 url path_to_where_to_store_html 
 ```
 
 ## Note
 - Make sure you have internet connection to download the data for challenge 2,3
 - Make sure you have internet connection to download the data for challenge 1 from https://catalog.data.gov/dataset/lottery-mega-millions-winning-numbers-beginning-2002/resource/61eea3d0-6b6d-43a4-ae02-6432e6a4e517 and store the file in data_files directory
 - The output for challenge 1,2,3,4,5 will be saved in the provided filepath
-- The output for challenge 4 will be saved in the provided filepath
-- The output for challenge 5 will be saved in the provided filepath
-
 ## Requirements
 
 - Python 3.7 or later

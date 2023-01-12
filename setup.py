@@ -7,6 +7,10 @@ import ast
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, current_dir)
 
+if os.path.exists("README.md"):
+    os.remove("README.md")
+    print(f""" "README.md" already exists, removed old file""")
+
 with open("README.md", "w") as f:
     f.write("# Challenge Project\n\n")
     f.write("This project includes 5 challenges that cover a range of topics such as data manipulation, machine learning and web scraping. Each challenge can be run independently using the command line interface.\n\n")
@@ -22,7 +26,7 @@ with open("README.md", "w") as f:
     f.write("challenge-1 path_to_data col1 col2 path_where_to_save\n")
     f.write("challenge-2 path_to_store_file_txt \n")
     f.write("challenge-3 path_to_store_file_txt \n")
-    f.write("challenge-4 path_to_store_file_csv")
+    f.write("challenge-4 path_to_store_file_csv \n")
     f.write("challenge-5 url path_to_where_to_store_html \n")
     f.write("```\n\n")
     f.write("## Note\n")

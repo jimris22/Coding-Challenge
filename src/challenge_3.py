@@ -52,8 +52,8 @@ def hyper_tune_pipeline(pipe, X, y):
     """
     # Define the parameter grid
     param_grid = {
-        'reg__n_estimators': [50, 100, 200],
-        'reg__max_depth': [None, 5, 10],
+        'reg__n_estimators': [10, 20, 30],
+        'reg__max_depth': [None, 2, 3],
         'reg__min_samples_split': [2, 5, 10]
     }
 

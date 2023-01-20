@@ -26,7 +26,8 @@ challenge-5 url path_to_save_html
 
 ## Note
 - Options for operation in challenge 1 are: add, subtract, multiply, divide.
-- Make sure to download the data from https://catalog.data.gov/dataset/lottery-mega-millions-winning-numbers-beginning-2002/resource/61eea3d0-6b6d-43a4-ae02-6432e6a4e517 and store the file in data_files directory- Make sure you have internet connection to download the data for challenge 2,3
+- Make sure to download the data from https://catalog.data.gov/dataset/lottery-mega-millions-winning-numbers-beginning-2002/resource/61eea3d0-6b6d-43a4-ae02-6432e6a4e517 and store the file in data_files directory
+- Make sure you have internet connection to download the data for challenge 2,3
 - Make sure you have internet connection to download the data for challenge 1
 - The output for challenge 1,2,3,4,5 will be saved in the provided filepath
 ## Requirements

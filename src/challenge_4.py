@@ -5,12 +5,15 @@ import os
 
 def check_file_type(filepath):
     """
-    Check if the file extension is .txt
+    Check if the file extension is .csv
     Args:
         filepath (str): path to the file
     """
-    if not filepath.endswith('.csv'):
-        raise ValueError("Expected file type as .csv")
+    try:
+        assert filepath.endswith('.csv'), "Expected file type as .csv"
+    except:
+        print("Expected file type as .csv")
+        raise
 
 def get_process_info():
     """
@@ -18,14 +21,18 @@ def get_process_info():
     Returns:
         processes (list): list of dictionaries, each containing the process ID, process name, and memory utilization
     """
-    processes = []
-    for process in psutil.process_iter():
-        try:
-            process_info = process.as_dict(attrs=['pid', 'name', 'memory_info'])
-            process_info['memory_utilization'] = process_info['memory_info'].rss / (1024 ** 2)
-            processes.append(process_info)
-        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-            pass
+    try:
+        processes = []
+        for process in psutil.process_iter():
+            try:
+                process_info = process.as_dict(attrs=['pid', 'name', 'memory_info'])
+                process_info['memory_utilization'] = process_info['memory_info'].rss / (1024 ** 2)
+                processes.append(process_info)
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                pass
+    except:
+        print("Error Occured while getting the process information")
+        raise
     return processes
 
 def save_process_info(processes, filepath):
@@ -36,11 +43,14 @@ def save_process_info(processes, filepath):
         filepath (str): path to save the csv file
     """
     # Create the directory if it does not exist
-    if not os.path.exists(os.path.dirname(filepath)):
-        os.makedirs(os.path.dirname(filepath))
-
-    df = pd.DataFrame(processes)
-    df.to_csv(filepath)
+    try:
+        if not os.path.exists(os.path.dirname(filepath)):
+            os.makedirs(os.path.dirname(filepath))
+        df = pd.DataFrame(processes)
+        df.to_csv(filepath)
+    except:
+        print("Error Occured while saving the process information")
+        raise
 
 def challenge_4():
     """

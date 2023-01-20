@@ -10,8 +10,11 @@ def check_file_type(filepath):
     Args:
         filepath (str): path to the file
     """
-    if not filepath.endswith('.html'):
-        raise ValueError("Expected file type as .html")
+    try:
+        if not filepath.endswith('.html'):
+            raise ValueError("Expected file type as .html")
+    except:
+        print("An error occured while checking the file type")
 
 
 def download_html(url):
@@ -22,9 +25,12 @@ def download_html(url):
     Returns:
         html (str): HTML contents of the webpage
     """
-    response = requests.get(url)
-    html = response.text
-    return html
+    try:
+        response = requests.get(url)
+        html = response.text
+        return html
+    except:
+        print("An error occured while downloading the HTML")
 
 
 def save_html(filepath, html):
@@ -34,8 +40,11 @@ def save_html(filepath, html):
         filepath (str): path to save the HTML file
         html (str): HTML contents of the webpage
     """
-    with open(filepath, 'w') as f:
-        f.write(html)
+    try:
+        with open(filepath, 'w') as f:
+            f.write(html)
+    except:
+        print("An error occured while saving the HTML")
 
 
 def download_webpage(url, filepath):
@@ -46,11 +55,14 @@ def download_webpage(url, filepath):
         filepath (str): path to save the HTML file
     """
     check_file_type(filepath)
-    start_time = time.time()
-    html = download_html(url)
-    save_html(filepath, html)
-    elapsed_time = time.time() - start_time
-    print("Elapsed time: {:.4f} seconds".format(elapsed_time))
+    try:
+        start_time = time.time()
+        html = download_html(url)
+        save_html(filepath, html)
+        elapsed_time = time.time() - start_time
+        print("Elapsed time: {:.4f} seconds".format(elapsed_time))
+    except:
+        print("An error occured while downloading and saving the webpage")
 
 
 def challenge_5():
@@ -62,8 +74,27 @@ def challenge_5():
     parser.add_argument("filepath", help="Filepath to save the HTML file")
     args = parser.parse_args()
 
-    download_webpage(args.url, args.filepath)
+    try:
+        check_file_type(args.filepath)
+        assert requests.get(args.url).status_code == 200
+    except ValueError as e:
+        print(f'Error: {e}')
+        return
+    except AssertionError:
+        print(f'Error: Invalid URL')
+        return
 
+    start_time = time.time()
+    try:
+        html = download_html(args.url)
+        save_html(args.filepath, html)
+    except Exception as e:
+        print(f'Error: {e}')
+        return
+
+    elapsed_time = time.time() - start_time
+    print("Elapsed time: {:.4f} seconds".format(elapsed_time))
+    print(f"{args.filepath.split('/')[-1]} is saved at {args.filepath}")
 
 if __name__ == "__main__":
     challenge_5()
